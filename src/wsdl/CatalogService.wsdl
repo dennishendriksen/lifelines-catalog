@@ -1,0 +1,140 @@
+<wsdl:definitions xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://hl7.umcg.nl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="CatalogService" targetNamespace="http://hl7.umcg.nl">
+  <wsp:Policy wsu:Id="BasicHttpBinding_GenericLayerCatalogService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false"></sp:HttpsToken>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256></sp:Basic256>
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict></sp:Strict>
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://hl7.umcg.nl/Imports">
+      <xsd:import namespace="http://hl7.umcg.nl" schemaLocation="CatalogService_metadata1.xsd"></xsd:import>
+      <xsd:import namespace="urn:hl7-org:v3" schemaLocation="CatalogService_schemas.xsd"></xsd:import>
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" schemaLocation="CatalogService_metadata2.xsd"></xsd:import>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="GenericLayerCatalogService_GetVersion_InputMessage">
+    <wsdl:part element="tns:GetVersion" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GenericLayerCatalogService_GetVersion_OutputMessage">
+    <wsdl:part element="tns:GetVersionResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetCatalog">
+    <wsdl:part element="tns:GetCatalog" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetCatalogResponse">
+    <wsdl:part element="tns:GetCatalogResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GenericLayerCatalogService_GetCatalog_FAULT_FaultMessage">
+    <wsdl:part element="tns:FAULT" name="detail"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetValueSets">
+    <wsdl:part element="tns:GetValueSets" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GetValueSetsResponse">
+    <wsdl:part element="tns:GetValueSetsResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GenericLayerCatalogService_GetValueSets_FAULT_FaultMessage">
+    <wsdl:part element="tns:FAULT" name="detail"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GenericLayerCatalogService_GetCatalogReleases_InputMessage"></wsdl:message>
+  <wsdl:message name="GetCatalogReleasesResponse">
+    <wsdl:part element="tns:GetCatalogReleasesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="GenericLayerCatalogService_GetCatalogReleases_FAULT_FaultMessage">
+    <wsdl:part element="tns:FAULT" name="detail"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="GenericLayerCatalogService">
+    <wsdl:operation name="GetVersion">
+      <wsdl:input message="tns:GenericLayerCatalogService_GetVersion_InputMessage" wsaw:Action="http://hl7.umcg.nl/GenericLayerCatalogService/GetVersion"></wsdl:input>
+      <wsdl:output message="tns:GenericLayerCatalogService_GetVersion_OutputMessage" wsaw:Action="http://hl7.umcg.nl/GenericLayerCatalogService/GetVersionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCatalog">
+      <wsdl:input message="tns:GetCatalog" name="GetCatalog" wsaw:Action="http://hl7.umcg.nl/GenericLayerCatalogService/GetCatalog"></wsdl:input>
+      <wsdl:output message="tns:GetCatalogResponse" name="GetCatalogResponse" wsaw:Action="http://hl7.umcg.nl/GenericLayerCatalogService/GetCatalogResponse"></wsdl:output>
+      <wsdl:fault message="tns:GenericLayerCatalogService_GetCatalog_FAULT_FaultMessage" name="FAULT" wsaw:Action="http://hl7.umcg.nl/GenericLayerCatalogService/GetCatalogFAULT"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetValueSets">
+      <wsdl:input message="tns:GetValueSets" name="GetValueSets" wsaw:Action="http://hl7.umcg.nl/GenericLayerCatalogService/GetValueSets"></wsdl:input>
+      <wsdl:output message="tns:GetValueSetsResponse" name="GetValueSetsResponse" wsaw:Action="http://hl7.umcg.nl/GenericLayerCatalogService/GetValueSetsResponse"></wsdl:output>
+      <wsdl:fault message="tns:GenericLayerCatalogService_GetValueSets_FAULT_FaultMessage" name="FAULT" wsaw:Action="http://hl7.umcg.nl/GenericLayerCatalogService/GetValueSetsFAULT"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCatalogReleases">
+      <wsdl:input message="tns:GenericLayerCatalogService_GetCatalogReleases_InputMessage" wsaw:Action="http://hl7.umcg.nl/GenericLayerCatalogService/GetCatalogReleases"></wsdl:input>
+      <wsdl:output message="tns:GetCatalogReleasesResponse" name="GetCatalogReleasesResponse" wsaw:Action="http://hl7.umcg.nl/GenericLayerCatalogService/GetCatalogReleasesResponse"></wsdl:output>
+      <wsdl:fault message="tns:GenericLayerCatalogService_GetCatalogReleases_FAULT_FaultMessage" name="FAULT" wsaw:Action="http://hl7.umcg.nl/GenericLayerCatalogService/GetCatalogReleasesFAULT"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_GenericLayerCatalogService" type="tns:GenericLayerCatalogService">
+    <wsp:PolicyReference URI="#BasicHttpBinding_GenericLayerCatalogService_policy"></wsp:PolicyReference>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"></soap:binding>
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://hl7.umcg.nl/GenericLayerCatalogService/GetVersion" style="document"></soap:operation>
+      <wsdl:input>
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCatalog">
+      <soap:operation soapAction="http://hl7.umcg.nl/GenericLayerCatalogService/GetCatalog" style="document"></soap:operation>
+      <wsdl:input name="GetCatalog">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="GetCatalogResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="FAULT">
+        <soap:fault name="FAULT" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetValueSets">
+      <soap:operation soapAction="http://hl7.umcg.nl/GenericLayerCatalogService/GetValueSets" style="document"></soap:operation>
+      <wsdl:input name="GetValueSets">
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="GetValueSetsResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="FAULT">
+        <soap:fault name="FAULT" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCatalogReleases">
+      <soap:operation soapAction="http://hl7.umcg.nl/GenericLayerCatalogService/GetCatalogReleases" style="document"></soap:operation>
+      <wsdl:input>
+        <soap:body use="literal"></soap:body>
+      </wsdl:input>
+      <wsdl:output name="GetCatalogReleasesResponse">
+        <soap:body use="literal"></soap:body>
+      </wsdl:output>
+      <wsdl:fault name="FAULT">
+        <soap:fault name="FAULT" use="literal"></soap:fault>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CatalogService">
+    <wsdl:port binding="tns:BasicHttpBinding_GenericLayerCatalogService" name="BasicHttpBinding_GenericLayerCatalogService">
+      <soap:address location="https://aps001.research.usor.nl/Umcg.Tcc.GenericLayer.CatalogService-1/CatalogService.svc"></soap:address>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
