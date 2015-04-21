@@ -4,7 +4,7 @@
 	<packaging>jar</packaging>
 	<artifactId>lifelines-catalog</artifactId>
 	<groupId>org.molgenis</groupId>
-	<version>1.7.11-SNAPSHOT</version>
+	<version>1.7.11</version>
 	<build>
 		<plugins>
 			<plugin>
