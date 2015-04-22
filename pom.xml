@@ -25,7 +25,6 @@
 					<vmArgs>
 						<vmArg>-Djavax.xml.accessExternalSchema=all</vmArg>
 					</vmArgs>
-					<packageName>nl.umcg.hl7.service.catalog</packageName>
 				</configuration>
 
 				<!-- if you want to use a specific version of JAX-WS, you can do so like 
@@ -36,7 +35,21 @@
 						<artifactId>jaxws-tools</artifactId>
 						<version>2.2.10</version>
 					</dependency>
-					
+					<dependency>
+						<groupId>com.sun.xml.bind</groupId>
+						<artifactId>jaxb-impl</artifactId>
+						<version>2.2.10</version>
+					</dependency>
+					<dependency>
+						<groupId>com.sun.xml.bind</groupId>
+						<artifactId>jaxb-core</artifactId>
+						<version>2.2.10</version>
+					</dependency>
+					<dependency>
+						<groupId>com.sun.xml.bind</groupId>
+						<artifactId>jaxb-xjc</artifactId>
+						<version>2.2.10</version>
+					</dependency>
 				</dependencies>
 			</plugin>
 		</plugins>
@@ -44,14 +57,18 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.sun.xml.ws</groupId>
-			<artifactId>jaxws-rt</artifactId>
-			<version>2.2.8</version>
-		</dependency>
-		<dependency>
 			<groupId>org.molgenis</groupId>
 			<artifactId>lifelines-hl7</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-tools</artifactId>
+			<version>2.2.10</version>
+		</dependency>
 	</dependencies>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 </project>
